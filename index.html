@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HubHarvest | Food Rescue Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://via.placeholder.com/32/28a745/FFFFFF?text=HH" type="image/png">
+</head>
+<body>
+    <div id="app-container">
+        <section id="landing-view" class="view active">
+            <div class="logo-area">
+                <h1 class="logo-text">HubHarvest</h1>
+                <p class="tagline">The Last Mile Solution for Food Waste.</p>
+            </div>
+            <div class="action-area">
+                <h2>Ready to make an impact?</h2>
+                <button class="btn btn-primary" onclick="showView('auth-view')">
+                    **Get Started**
+                </button>
+            </div>
+        </section>
+
+        <section id="auth-view" class="view">
+            <h2 class="view-title">Join HubHarvest</h2>
+            <div class="auth-toggle">
+                <button id="signInBtn" class="toggle-btn active" onclick="toggleAuth('signIn')">Sign In</button>
+                <button id="registerBtn" class="toggle-btn" onclick="toggleAuth('register')">Register</button>
+            </div>
+            
+            <form id="signInForm" class="auth-form active-form">
+                <input type="email" id="signInEmail" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary" onclick="handleAuth(event, 'signInForm')">Sign In</button> 
+                <a href="#" class="forgot-link">Forgot Password?</a>
+            </form>
+
+            <form id="registerForm" class="auth-form">
+                <input type="text" placeholder="Full Name or Business Name" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" placeholder="Password (min 6 characters)" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit" class="btn btn-primary" onclick="handleAuth(event, 'registerForm')">Register</button>
+            </form>
+            
+            <div id="authMessage" class="auth-message"></div> 
+            <button class="btn btn-secondary back-btn" onclick="showView('landing-view')">
+                ← Back
+            </button>
+        </section>
+
+        <section id="role-view" class="view">
+            <h2 class="view-title">Choose Your Path</h2>
+            <p>How would you like to help reduce food waste?</p>
+            
+            <div class="role-cards">
+                <div class="role-card donor" onclick="selectRole('donor')">
+                    <span class="role-icon">🍎</span>
+                    <h3>Become a Donor</h3>
+                    <p>Post surplus food from your business (restaurant, grocer, etc.).</p>
+                </div>
+                
+                <div class="role-card volunteer" onclick="selectRole('volunteer')">
+                    <span class="role-icon">🚗</span>
+                    <h3>Become a Volunteer</h3>
+                    <p>Use your vehicle to transport food to those in need.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

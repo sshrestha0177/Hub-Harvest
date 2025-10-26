@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HubHarvest - Volunteer Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="volunteer-container">
+        <header class="header">
+            <button onclick="goBackToRoleSelection()" class="back-btn">← Back</button>
+            <h1 class="logo-text">HubHarvest Volunteer</h1>
+        </header>
+
+        <section class="form-section">
+            <h2>Become a Food Rescue Volunteer</h2>
+            <p class="instruction">Join our mission to reduce food waste and help your community.</p>
+            
+            <form id="volunteerRegForm">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Vehicle & Availability</legend>
+
+                    <label for="vehicleType">Vehicle Type:</label>
+                    <select id="vehicleType" name="vehicleType" required>
+                        <option value="">Select Your Vehicle</option>
+                        <option value="bike">Bicycle / Walking</option>
+                        <option value="car">Car</option>
+                        <option value="suv_truck">SUV / Truck</option>
+                        <option value="van">Van / Commercial Vehicle</option>
+                    </select>
+
+                    <label for="serviceArea">Preferred Service Area:</label>
+                    <input type="text" id="serviceArea" name="serviceArea" placeholder="e.g., Downtown Boston, Cambridge, etc." required>
+
+                    <label for="availability">Weekly Availability (Hours):</label>
+                    <select id="availability" name="availability" required>
+                        <option value="">Select Availability</option>
+                        <option value="1-5">1-5 hours</option>
+                        <option value="5-10">5-10 hours</option>
+                        <option value="10-20">10-20 hours</option>
+                        <option value="20+">20+ hours</option>
+                    </select>
+                </fieldset>
+
+                <fieldset class="agreement-fieldset">
+                    <legend>Volunteer Agreement & Safety</legend>
+                    
+                    <p class="agreement-text">
+                        I confirm that I have a valid driver's license (if operating a vehicle) and appropriate insurance. 
+                        I agree to handle all food safely, maintain proper temperatures during transport, and follow all 
+                        food safety guidelines.
+                    </p>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="hasDriversLicense" name="hasDriversLicense">
+                        <label for="hasDriversLicense">I have a valid driver's license</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="hasVehicleInsurance" name="hasVehicleInsurance">
+                        <label for="hasVehicleInsurance">I have valid vehicle insurance</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="safetyAgreement" name="safetyAgreement" required>
+                        <label for="safetyAgreement">I agree to the Volunteer Safety Terms and Conditions</label>
+                    </div>
+                </fieldset>
+                
+                <div id="reMessage" class="submission-message"></div>
+
+                <div class="form-buttons">
+                    <button type="button" onclick="goBackToRoleSelection()" class="btn btn-secondary">
+                        ← Back to Role Selection
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Complete Volunteer Registration
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <script src="volunteer.js"></script>
+</body>
+</html>

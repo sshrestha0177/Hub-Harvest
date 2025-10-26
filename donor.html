@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HubHarvest Donor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="donor-container">
+        <header class="header">
+            <button id="backButton" class="back-btn" style="position: absolute; left: 20px; top: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">←</button>
+            <h1 class="logo-text">HubHarvest Donor</h1>
+            <p>Ready to rescue food?</p>
+        </header>
+
+        <section id="new-donation-form">
+            <h2>Post Surplus Food</h2>
+            <p class="instruction">Fill out the details below to create a new rescue mission.</p>
+
+            <form id="donationForm">
+                
+                <fieldset>
+                    <legend>Food Description</legend>
+                    
+                    <label for="foodType">Type of Food:</label>
+                    <select id="foodType" name="foodType" required>
+                        <option value="">Select Category</option>
+                        <option value="prepared">Prepared Meals (Unserved)</option>
+                        <option value="produce">Fresh Produce</option>
+                        <option value="bakery">Bakery Items</option>
+                        <option value="dairy">Dairy / Eggs</option>
+                        <option value="pantry">Pantry/Non-perishable</option>
+                    </select>
+
+                    <label for="quantity">Estimated Quantity/Size:</label>
+                    <input type="text" id="quantity" name="quantity" placeholder="e.g., 5 large trays, 20 lbs, 3 boxes" required>
+
+                    <label for="pickupDeadline">Pickup Deadline:</label>
+                    <input type="datetime-local" id="pickupDeadline" name="pickupDeadline" required>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Location & Visuals</legend>
+
+                    <label for="pickupAddress">Pickup Location Address:</label>
+                    <input type="text" id="pickupAddress" name="pickupAddress" placeholder="123 Main St, City, Zip" required>
+
+                    <label for="foodImage">Upload Photo of Food (Optional but Recommended):</label>
+                    <input type="file" id="foodImage" name="foodImage" accept="image/*">
+                    <p class="hint">A clear picture speeds up volunteer claims.</p>
+                </fieldset>
+
+                <fieldset class="agreement-fieldset">
+                    <legend>Food Safety Agreement **(Required)**</legend>
+                    
+                    <p class="agreement-text">
+                        By checking this box, I confirm that the surplus food being donated is **safe, unadulterated, and fit for human consumption** at the time of pickup. I understand that HubHarvest operates under Good Samaritan Food Donation laws and I am responsible for the safety of the food until volunteer pickup. **The food is not spoiled, expired, or otherwise inedible.**
+                    </p>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="safetyAgreement" name="safetyAgreement" required>
+                        <label for="safetyAgreement">I agree to the Food Safety Terms.</label>
+                    </div>
+                </fieldset>
+                
+                <div id="submissionMessage" class="submission-message"></div>
+
+                <div class="form-buttons">
+                    <button type="button" id="backToRoleSelect" class="btn btn-secondary">
+                        ← Back to Role Selection
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        **Post Food for Rescue**
+                    </button>
+                </div>
+            </form>
+
+        </section>
+
+    </div>
+
+    <script src="donor.js"></script>
+</body>
+</html>

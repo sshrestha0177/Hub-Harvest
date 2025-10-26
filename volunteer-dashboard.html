@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HubHarvest - Volunteer Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="volunteer-container">
+        <header class="header">
+            <button onclick="goBackToRegistration()" class="back-btn">← Back</button>
+            <h1 class="logo-text">Food Rescue Missions</h1>
+            <p>Available food donations ready for pickup</p>
+        </header>
+
+        <!-- Main Dashboard View -->
+        <section id="dashboard-view" class="dashboard-section active">
+            <div class="dashboard-header">
+                <h2>Available Food Donations</h2>
+                <p>Help rescue surplus food from local businesses</p>
+            </div>
+
+            <div id="donations-container" class="donations-container">
+                <div class="loading-message">Loading available food donations...</div>
+            </div>
+        </section>
+
+        <!-- Mission Tracking View (Hidden by default) -->
+        <section id="mission-view" class="mission-section">
+            <div class="mission-header">
+                <h2 id="mission-title">Rescue Mission in Progress</h2>
+                <p id="mission-subtitle">Following route to pickup location</p>
+                
+                <!-- Transportation Mode Selector -->
+                <div class="transportation-selector">
+                    <label>Travel Mode:</label>
+                    <div class="transport-buttons">
+                        <button class="transport-btn active" data-mode="DRIVING" onclick="changeTravelMode('DRIVING')">🚗 Drive</button>
+                        <button class="transport-btn" data-mode="WALKING" onclick="changeTravelMode('WALKING')">🚶 Walk</button>
+                        <button class="transport-btn" data-mode="BICYCLING" onclick="changeTravelMode('BICYCLING')">🚴 Bike</button>
+                    </div>
+                </div>
+
+                <div class="mission-progress">
+                    <div class="progress-step active" id="step-pickup">
+                        <div class="step-icon">1</div>
+                        <div class="step-label">Pickup Food</div>
+                    </div>
+                    <div class="progress-step" id="step-select">
+                        <div class="step-icon">2</div>
+                        <div class="step-label">Select Shelter</div>
+                    </div>
+                    <div class="progress-step" id="step-deliver">
+                        <div class="step-icon">3</div>
+                        <div class="step-label">Deliver Food</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="map-container" class="map-container">
+                <div id="map"></div>
+                <div class="map-overlay">
+                    <div class="route-info">
+                        <h4>Route Information</h4>
+                        <div class="route-details">
+                            <span>Distance: <strong id="route-distance">--</strong></span>
+                            <span>ETA: <strong id="route-eta">--</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mission-controls">
+                <div class="mission-info">
+                    <div class="info-card">
+                        <h4>Current Destination</h4>
+                        <p id="current-destination">Pickup Location</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Transport Mode</h4>
+                        <p id="current-transport">🚗 Driving</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Next Step</h4>
+                        <p id="current-step">Pickup Food</p>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="arrived-btn" class="btn btn-success" onclick="markArrivedAtPickup()">
+                        🎯 I've Arrived at Pickup
+                    </button>
+                    <button id="select-shelter-btn" class="btn btn-primary" style="display: none;" onclick="showShelterSelection()">
+                        🏠 Select Food Shelter
+                    </button>
+                    <button id="complete-mission-btn" class="btn btn-success" style="display: none;" onclick="completeMission()">
+                        ✅ Mission Complete
+                    </button>
+                </div>
+
+                <!-- Shelter Selection Panel -->
+                <div id="shelter-selection" class="shelter-selection" style="display: none;">
+                    <h4>Select a Food Shelter</h4>
+                    <div class="shelter-filters">
+                        <label>Sort by:</label>
+                        <select id="shelter-sort" onchange="sortShelters()">
+                            <option value="distance">Nearest First</option>
+                            <option value="capacity">Largest Capacity</option>
+                        </select>
+                    </div>
+                    <div id="shelters-list" class="shelters-list">
+                        <!-- Shelters will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Load Google Maps API-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFLOFfxKbHgo1KmL0zKgLEq4o4l2-DpzA&libraries=geometry,places&callback=initMap" async defer></script>
+    <script src="volunteer-dashboard.js"></script>
+</body>
+</html>
